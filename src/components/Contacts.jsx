@@ -1,9 +1,8 @@
 import { useState } from "react";
+import { v4 } from "uuid";
+
 import ContactList from "./ContactList";
-import { ssrImportMetaKey } from "vite/runtime";
 import inputs from "../constans/inputs.js";
-
-
 
 function Contacts() {
   const [contacts, setContacts] = useState([]);
@@ -33,8 +32,10 @@ function Contacts() {
       return;
     }
     setAlert("");
-    setContacts((contacts) => [...contacts, contact]);
+    const newContact = { ...contact, id: v4()}
+    setContacts((contacts) => [...contacts, newContact]);
     setContact({
+      id: "",
       name: "",
       lastName: "",
       email: "",

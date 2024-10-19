@@ -1,8 +1,20 @@
-function ContactList(props) {
-    console.log(props);
+import ContactItem from "./ContactItem.jsx"
+
+function ContactList({ contacts }) {
   return (
-    <div>ContactList</div>
-  )
+    <div>
+      <h3>Contacts List</h3>
+      {contacts.length ? (
+        <ul>
+          {contacts.map((contact) => (
+            <ContactItem key={contact.id} data={contact} />
+          ))}
+        </ul>
+      ) : (
+        <p>No Contact Yet!</p>
+      )}
+    </div>
+  );
 }
 
-export default ContactList
+export default ContactList;
